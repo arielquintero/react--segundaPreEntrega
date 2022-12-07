@@ -1,29 +1,34 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ItemList from "../../ComponentContainer/ItemList/ItemList";
-import { showProdApi } from "../../ComponentContainer/ShowProdApi/showProdApi";
+import {
+    getProducts,
+    getProductsByCategory,
+} from "../../ComponentContainer/ShowProdApi/showProdApi";
 import "./ItemListConteiner.scss";
 
 const ItemListContainer = ({ greeting, myName }) => {
     const [products, setProducts] = useState([]);
 
-    const { id } = useParams();
+    const { idCategory } = useParams();
 
-    console.log(id);
+    // console.log(idCategory);
 
     useEffect(() => {
-        if (id) {
-            showProdApi()
-                .then((data) =>
-                    setProducts(data.filter((prod) => prod.category === id))
-                )
-                .catch((err) => console.error(err));
+        if (idCategory) {
+            setTimeout(() => {
+                getProductsByCategory(idCategory)
+                .then((products) => {
+                    setProducts(products);
+                });
+            }, 2000);
         } else {
-            showProdApi
-                .then((data) => setProducts(data))
-                .catch((err) => console.error(err));
+            getProducts()
+            .then((products) => {
+                setProducts(products);
+            });
         }
-    }, [id]);
+    }, [idCategory]);
 
     return (
         <div className="item-list-container">
@@ -39,3 +44,9 @@ const ItemListContainer = ({ greeting, myName }) => {
 };
 
 export default ItemListContainer;
+
+// showProdApi()
+//     .then((data) =>
+//         setProducts(data.filter((prod) => prod.category === id))
+//     )
+//     .catch((err) => console.error(err));

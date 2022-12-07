@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-// import { CartWidget } from "../CartWidget/CartWidget";
+import CartWidget from "../CartWidget/CartWidget";
 import "./NavBar.scss";
 
 const NavBar = () => {
@@ -9,9 +9,9 @@ const NavBar = () => {
             <section className="flex-links">
                 <NavLink
                     className={({ isActive }) =>
-                        isActive ? "link link-home" : null
+                        isActive ? "link link-home" : "link"
                     }
-                    href="#h">
+                    >
                     Home
                 </NavLink>
                 <NavLink className="link link-article" to="/category/componentes1">
@@ -20,14 +20,12 @@ const NavBar = () => {
                 <NavLink className="link link-article" to="/category/componentes2">
                     Article2
                 </NavLink>
-                <NavLink className="link link-contact" to="/contact">
-                    Contact
-                </NavLink>
-                {/* <NavLink className="link link-contact" to="/cart">
-                    <CartWidget />
-                </NavLink> */}
+                {
+                    <NavLink className="link link-cart" to="/cart">
+                        <CartWidget />
+                    </NavLink>
+                }
             </section>
-            {/* <CartWidget /> */}
         </div>
     );
 };

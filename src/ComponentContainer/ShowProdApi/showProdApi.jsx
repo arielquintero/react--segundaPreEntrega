@@ -26,7 +26,7 @@ let products = [
     {
         id: "4",
         name: "circuitos-integrados2",
-        categoria: "componentes",
+        categoria: "componentes2",
         stock: "100",
         price: "1500",
         img: '/src/assets/images/circuitos-integrados.webp',
@@ -41,8 +41,29 @@ let products = [
     },
 ];
 
-export const showProdApi = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve(products);
-    }, 1500);
-});
+export const getProductsByCategory = (category) => {
+    return new Promise(res => {
+        const productos = products.filter(product => product.categoria === category);
+        setTimeout(() => {
+            res(productos);
+        },1500);
+    });
+}
+
+export const getProducts = () => {
+    return new Promise((res,rej) => {
+        setTimeout(() => {
+            res(products);
+        },2000);
+    });
+}
+
+
+export const getProductId = (itemId) => {
+    return new Promise(res => {
+        const findProductId = products.find(product => product.id === itemId);
+        setTimeout(() => {
+            res(findProductId)
+        },1500);
+    })
+}

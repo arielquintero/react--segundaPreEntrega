@@ -11,16 +11,16 @@ const ItemCount = ({ stock=10, initial=1, onAdd}) => {
     const handleOnAdd = () => onAdd(count);
 
   return (
-    <div>
-        <div className="header">
-            <label htmlFor="">{count}</label>
+    <div className="card-count">
+        <div className="header-card-count">
+            <span>Cantidad: {count}</span>
         </div>
-        <div className="body">
-            <button onClick={add}> + </button>
-            <button onClick={subtract}> - </button>
+        <div className="body-card-count">
+            <button className="button-card-count-add" onClick={add}> + </button>
+            <button className="button-card-count-subtract" onClick={subtract}> - </button>
         </div>
-        <div className="footer">
-            <button onClick={ handleOnAdd }>Agregar al Carrito</button>
+        <div className="footer-card-count">
+            <button className="button-card-count" onClick={ handleOnAdd }>Agregar al Carrito</button>
         </div>
     </div>
   )
