@@ -8,10 +8,10 @@ const NavBar = () => {
             <span className="brand">Ecommers</span>
             <section className="flex-links">
                 <NavLink
+                    to="/"
                     className={({ isActive }) =>
                         isActive ? "link link-home" : "link"
-                    }
-                    >
+                    }>
                     Home
                 </NavLink>
                 <NavLink className="link link-article" to="/category/componentes1">
